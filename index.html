@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>TCP Agency — Real Estate Lead Generation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --black:      #000000;
+      --black-deep: #0a0a0a;
+      --surface:    #111111;
+      --surface-2:  #1a1a1a;
+      --border:     rgba(245,197,24,0.18);
+      --border-dim: rgba(255,255,255,0.07);
+      --gold:       #F5C518;
+      --gold-dim:   rgba(245,197,24,0.11);
+      --gold-glow:  rgba(245,197,24,0.28);
+      --white:      #ffffff;
+      --muted:      #999999;
+      --dim:        #555555;
+      --grad-gold:  linear-gradient(135deg, #F5C518, #d4a017);
+      --grad-text:  linear-gradient(135deg, #F5C518 0%, #ffe066 55%, #F5C518 100%);
+      --whatsapp:   #25d366;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* subtle noise */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-dim);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 11px; }
+    .nav-logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+    .nav-logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 17px; color: var(--white); letter-spacing: -0.02em;
+    }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px;
+      background: var(--gold); color: var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 14px;
+      border-radius: 8px; text-decoration: none;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { box-shadow: 0 0 28px var(--gold-glow); transform: translateY(-1px); }
+    @media (max-width: 600px) {
+      nav { padding: 13px 18px; }
+      .nav-logo-text { font-size: 15px; }
+      .nav-cta { font-size: 13px; padding: 9px 15px; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 130px 24px 90px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 700px; height: 480px;
+      background: radial-gradient(ellipse, rgba(245,197,24,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px; background: var(--gold-dim);
+      color: var(--gold); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 30px; position: relative; z-index: 1;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.35;transform:scale(0.7);} }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: clamp(34px, 5.5vw, 68px);
+      line-height: 1.02; letter-spacing: -0.03em;
+      color: var(--white); max-width: 840px;
+      margin-bottom: 6px; position: relative; z-index: 1;
+    }
+    .hero h1 .gold-line {
+      display: block;
+      background: var(--grad-text);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 1.8vw, 19px); color: var(--muted);
+      max-width: 540px; margin: 22px auto 46px; line-height: 1.75;
+      position: relative; z-index: 1;
+    }
+    .hero-sub strong { color: var(--white); font-weight: 600; }
+
+    .hero-cta-group {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 18px 36px;
+      background: var(--gold); color: var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 16px;
+      border-radius: 10px; text-decoration: none;
+      box-shadow: 0 4px 36px rgba(245,197,24,0.32);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 52px rgba(245,197,24,0.48); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 18px 26px;
+      border: 1px solid rgba(255,255,255,0.14); color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: 15px;
+      border-radius: 10px; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-stats {
+      display: flex; flex-wrap: wrap;
+      margin-top: 68px;
+      border: 1px solid var(--border);
+      border-radius: 16px; background: var(--surface);
+      overflow: hidden; position: relative; z-index: 1;
+      max-width: 680px; width: 100%;
+    }
+    .stat-item {
+      flex: 1; min-width: 150px;
+      padding: 26px 22px; text-align: center;
+      border-right: 1px solid var(--border-dim);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 34px;
+      color: var(--gold); line-height: 1; margin-bottom: 5px;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+
+    @media (max-width: 580px) { .hero-stats { display: none; } }
+
+    /* ── SHARED LAYOUT ── */
+    .section-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 22px; height: 2px; background: var(--gold);
+    }
+    .section-h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: clamp(26px, 3.8vw, 46px);
+      line-height: 1.1; letter-spacing: -0.025em;
+      color: var(--white); margin-bottom: 18px;
+    }
+    .section-h2 span {
+      background: var(--grad-text);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-lead { font-size: 16px; color: var(--muted); max-width: 540px; line-height: 1.8; }
+
+    /* ── PROBLEM ── */
+    .problem-wrap { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px; margin-top: 52px;
+    }
+    .pain-card {
+      background: var(--surface);
+      border: 1px solid var(--border-dim);
+      border-radius: 16px; padding: 30px 26px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .pain-card:hover { border-color: var(--border); transform: translateY(-4px); }
+    .pain-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--grad-gold); opacity: 0; transition: opacity 0.25s;
+    }
+    .pain-card:hover::before { opacity: 1; }
+    .pain-icon {
+      width: 46px; height: 46px; background: var(--gold-dim);
+      border-radius: 11px; display: flex; align-items: center;
+      justify-content: center; margin-bottom: 18px; font-size: 20px;
+    }
+    .pain-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 16px; color: var(--white); margin-bottom: 9px;
+    }
+    .pain-card p { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+
+    /* ── HOW WE GET LEADS ── */
+    .how-wrap { padding: 100px 24px; background: var(--surface); }
+    .how-inner { max-width: 1100px; margin: 0 auto; }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px; margin-top: 56px;
+      border: 1px solid var(--border-dim); border-radius: 20px; overflow: hidden;
+    }
+    .how-card {
+      background: var(--black-deep); padding: 38px 34px;
+      transition: background 0.2s;
+    }
+    .how-card:hover { background: var(--surface-2); }
+    .how-tag {
+      display: inline-block; padding: 4px 12px; border-radius: 999px;
+      background: var(--gold-dim); color: var(--gold);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 18px;
+    }
+    .how-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 21px; color: var(--white);
+      line-height: 1.2; margin-bottom: 12px;
+    }
+    .how-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 22px; }
+    .how-points { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .how-points li {
+      display: flex; align-items: flex-start; gap: 9px;
+      font-size: 13px; color: var(--muted);
+    }
+    .how-points li::before {
+      content: '✦'; color: var(--gold); font-size: 10px;
+      margin-top: 3px; flex-shrink: 0;
+    }
+    .how-points li strong { color: var(--white); font-weight: 600; }
+
+    /* ── WHO ── */
+    .who-wrap { padding: 100px 24px; }
+    .who-inner { max-width: 1100px; margin: 0 auto; }
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px; margin-top: 48px;
+    }
+    .who-card {
+      padding: 28px 20px; border: 1px solid var(--border-dim);
+      border-radius: 14px; background: var(--surface);
+      text-align: center; transition: border-color 0.2s, transform 0.2s;
+    }
+    .who-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .who-emoji { font-size: 32px; margin-bottom: 14px; display: block; }
+    .who-card h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: var(--white); margin-bottom: 7px; }
+    .who-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── PROCESS ── */
+    .process-wrap { padding: 100px 24px; background: var(--surface); }
+    .process-inner { max-width: 860px; margin: 0 auto; }
+    .process-steps { display: flex; flex-direction: column; margin-top: 52px; position: relative; }
+    .process-steps::before {
+      content: ''; position: absolute; left: 19px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .process-step { display: flex; gap: 26px; padding-bottom: 44px; }
+    .process-step:last-child { padding-bottom: 0; }
+    .step-num {
+      width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%;
+      background: var(--gold); color: var(--black);
+      font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .step-body h3 {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 19px; color: var(--white); margin-bottom: 7px; padding-top: 9px;
+    }
+    .step-body p { font-size: 14.5px; color: var(--muted); line-height: 1.75; }
+
+    /* ── VIDEOS ── */
+    .videos-wrap { padding: 100px 24px; }
+    .videos-inner { max-width: 1100px; margin: 0 auto; }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px; margin-top: 48px;
+    }
+    .video-card {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border-dim); background: var(--surface);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .video-card:hover { border-color: var(--border); transform: translateY(-4px); }
+    .video-card iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
+    .video-meta { padding: 14px 18px; }
+    .video-meta strong { color: var(--white); font-weight: 600; font-size: 13.5px; display: block; margin-bottom: 3px; }
+    .video-meta p { font-size: 12.5px; color: var(--muted); }
+
+    /* ── MAIN CTA SECTION ── */
+    .cta-section {
+      padding: 120px 24px;
+      background: var(--surface);
+      position: relative; overflow: hidden;
+    }
+    .cta-section-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 640px; height: 400px;
+      background: radial-gradient(ellipse, rgba(245,197,24,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-inner { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .cta-box {
+      background: var(--black-deep);
+      border: 1px solid var(--border);
+      border-radius: 24px; padding: 56px 48px;
+      position: relative; text-align: center;
+    }
+    @media (max-width: 480px) { .cta-box { padding: 36px 22px; } }
+    .cta-box::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--grad-gold);
+      border-radius: 24px 24px 0 0;
+    }
+    .cta-box-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 5px 14px; border-radius: 999px;
+      background: var(--gold-dim); border: 1px solid var(--border);
+      color: var(--gold); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 22px;
+    }
+    .cta-box-eyebrow span {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .cta-box h2 {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 800;
+      font-size: clamp(22px, 3.5vw, 30px); color: var(--white);
+      line-height: 1.2; margin-bottom: 10px;
+    }
+    .cta-box h2 span {
+      background: var(--grad-text);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .cta-box-sub { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 34px; }
+
+    .checklist { text-align: left; display: flex; flex-direction: column; gap: 12px; margin-bottom: 34px; }
+    .checklist li {
+      display: flex; gap: 11px; align-items: flex-start;
+      font-size: 14px; color: var(--muted);
+    }
+    .checklist li::before {
+      content: '';
+      width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px;
+      background: var(--gold-dim);
+      border: 1px solid var(--border); border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='%23F5C518' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center;
+    }
+    .checklist li strong { color: var(--white); }
+
+    .btn-book {
+      display: inline-flex; align-items: center; gap: 10px;
+      width: 100%; justify-content: center;
+      padding: 20px 36px; background: var(--gold); color: var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 17px;
+      border-radius: 12px; text-decoration: none;
+      box-shadow: 0 4px 44px rgba(245,197,24,0.38);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-book:hover { transform: translateY(-3px); box-shadow: 0 8px 60px rgba(245,197,24,0.52); }
+    .btn-note { margin-top: 13px; font-size: 12px; color: var(--dim); }
+
+    /* whatsapp strip */
+    .wa-strip {
+      margin-top: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 24px;
+      border: 1px solid rgba(37,211,102,0.2);
+      border-radius: 12px; background: rgba(37,211,102,0.05);
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .wa-strip:hover { border-color: rgba(37,211,102,0.45); }
+    .wa-strip svg { flex-shrink: 0; }
+    .wa-strip-text { font-size: 14px; color: #34d399; font-weight: 600; }
+    .wa-strip-sub { font-size: 12px; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black-deep);
+      border-top: 1px solid var(--border-dim);
+      padding: 38px 24px; text-align: center;
+    }
+    .footer-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+    .footer-logo img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+    .footer-logo-name { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 15px; color: var(--white); }
+    .footer-logo-name span { color: var(--gold); }
+    .footer-tagline { font-size: 13px; color: var(--dim); margin-bottom: 6px; }
+    .footer-copy { font-size: 12px; color: var(--dim); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; } }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://i.postimg.cc/cJXVLmcm/tcp-gol-logo.jpg" alt="TCP Agency" onerror="this.style.display='none'" />
+    <span class="nav-logo-text">TCP <span>Agency</span></span>
+  </div>
+  <a href="https://cal.com/tcp-agency/discovery-call" target="_blank" rel="noopener" class="nav-cta">
+    Book Free Call →
+  </a>
+</nav>
+
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <div class="hero-eyebrow reveal">
+    <span class="eyebrow-dot"></span>
+    Real Estate Lead Generation
+  </div>
+
+  <h1 class="reveal">
+    Your Properties Are Great.<br>
+    <span class="gold-line">So Why Are Your<br>Leads Dry?</span>
+  </h1>
+
+  <p class="hero-sub reveal">
+    We help real estate businesses — brokers, developers & sales teams —
+    generate <strong>high-quality, ready-to-buy leads</strong> through
+    professional video shoots, content editing and targeted Meta Ads.
+    No fluff. Just inquiries.
+  </p>
+
+  <div class="hero-cta-group reveal">
+    <a href="https://cal.com/tcp-agency/discovery-call" target="_blank" rel="noopener" class="btn-primary">
+      Get a Free Lead Audit Call
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#how" class="btn-ghost">See How It Works ↓</a>
+  </div>
+
+  <div class="hero-stats reveal">
+    <div class="stat-item">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Real Estate Clients</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3x</div>
+      <div class="stat-label">Avg Lead Volume</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">₹0</div>
+      <div class="stat-label">First Call Cost</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ PROBLEM ══════════ -->
+<div class="problem-wrap">
+  <div class="section-eyebrow reveal">The Real Problem</div>
+  <h2 class="section-h2 reveal">You're Losing Buyers<br>Every Single Day — <span>Here's Why</span></h2>
+  <p class="section-lead reveal">Today's property buyer does 80% of their research online before ever picking up the phone. If you're not showing up — someone else is closing that deal.</p>
+
+  <div class="pain-grid">
+    <div class="pain-card reveal">
+      <div class="pain-icon">📉</div>
+      <h3>Leads Have Dried Up</h3>
+      <p>Referrals and word-of-mouth aren't enough anymore. Without a consistent digital pipeline, your inquiry count keeps dropping.</p>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-icon">💸</div>
+      <h3>Ad Spend Is Wasted</h3>
+      <p>You boosted a post, spent ₹5,000 and got 2 cold inquiries. Bad creatives + no targeting strategy = money down the drain.</p>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-icon">📱</div>
+      <h3>Your Content Doesn't Convert</h3>
+      <p>Low-quality property photos and shaky walk-through videos don't build buyer confidence. Buyers scroll right past.</p>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-icon">👻</div>
+      <h3>Invisible to Online Buyers</h3>
+      <p>Your competitors are running ads and posting professional content daily. Without visibility, you simply don't exist to online buyers.</p>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-icon">⏱</div>
+      <h3>No Time to Do It Right</h3>
+      <p>You're busy closing deals and managing clients. Running a proper content and ads operation on the side is practically impossible alone.</p>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-icon">🎯</div>
+      <h3>Wrong Audience, Wrong Leads</h3>
+      <p>Getting leads that can't afford your properties wastes your sales team's time and kills their motivation. Quality beats quantity every time.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ HOW WE GET LEADS ══════════ -->
+<div class="how-wrap" id="how">
+  <div class="how-inner">
+    <div class="section-eyebrow reveal">Our Approach</div>
+    <h2 class="section-h2 reveal">Three Things That Actually <span>Fill Your Pipeline</span></h2>
+    <p class="section-lead reveal">Most agencies do generic marketing. We specialize in one thing: getting real estate businesses a steady flow of serious, qualified leads — using three proven levers.</p>
+
+    <div class="how-grid reveal">
+      <div class="how-card">
+        <span class="how-tag">Visual Production</span>
+        <h3>Professional Property Shoots & Video Editing</h3>
+        <p>Buyers decide in seconds. We produce cinematic property walkthroughs, aerial drone shots and short-form reels that make your listings impossible to scroll past.</p>
+        <ul class="how-points">
+          <li><strong>Property walkthrough videos</strong> — shot & edited</li>
+          <li><strong>Drone aerial footage</strong> — for plots & large projects</li>
+          <li><strong>Instagram Reels & YouTube Shorts</strong> — optimized formats</li>
+          <li><strong>Thumbnail & cover design</strong> — for maximum click rate</li>
+        </ul>
+      </div>
+
+      <div class="how-card">
+        <span class="how-tag">Paid Advertising</span>
+        <h3>Meta Ads Built to Deliver Qualified Buyers</h3>
+        <p>We don't just run ads — we build complete lead funnels. From audience research to ad creative to landing page, every rupee is tracked and optimized.</p>
+        <ul class="how-points">
+          <li><strong>Facebook & Instagram campaigns</strong> — full funnel setup</li>
+          <li><strong>Geo + income + intent targeting</strong> — reach ready buyers</li>
+          <li><strong>High-converting landing pages</strong> — built for real estate</li>
+          <li><strong>Weekly ROI reporting</strong> — cost per lead tracked</li>
+        </ul>
+      </div>
+
+      <div class="how-card">
+        <span class="how-tag">Social Media</span>
+        <h3>Consistent Content on Instagram, Facebook & YouTube</h3>
+        <p>Leads don't come from one viral post. They come from showing up every week with content that builds trust. We handle the entire content engine for you.</p>
+        <ul class="how-points">
+          <li><strong>Monthly content calendar</strong> — planned & executed</li>
+          <li><strong>Listing posts, market updates, reels</strong> — all formats</li>
+          <li><strong>Caption writing & hashtag strategy</strong> — platform-native</li>
+          <li><strong>DM & comment management</strong> — leads captured fast</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ WHO WE SERVE ══════════ -->
+<div class="who-wrap">
+  <div class="who-inner">
+    <div class="section-eyebrow reveal">Who We Work With</div>
+    <h2 class="section-h2 reveal">If You're in Real Estate,<br><span>We Can Get You Leads</span></h2>
+
+    <div class="who-grid">
+      <div class="who-card reveal">
+        <span class="who-emoji">🏠</span>
+        <h3>Independent Brokers</h3>
+        <p>Solo agents who want a consistent digital lead pipeline without hiring a full marketing team</p>
+      </div>
+      <div class="who-card reveal">
+        <span class="who-emoji">🏢</span>
+        <h3>Real Estate Agencies</h3>
+        <p>Agency owners who want to dominate their local market and keep their sales team's calendar full</p>
+      </div>
+      <div class="who-card reveal">
+        <span class="who-emoji">🏗</span>
+        <h3>Property Developers</h3>
+        <p>Developers who need pre-launch buzz and a waitlist of serious buyers before their project even opens</p>
+      </div>
+      <div class="who-card reveal">
+        <span class="who-emoji">📊</span>
+        <h3>Real Estate Sales Teams</h3>
+        <p>Sales managers who are tired of chasing cold leads and want their team working only qualified inquiries</p>
+      </div>
+      <div class="who-card reveal">
+        <span class="who-emoji">🏨</span>
+        <h3>Commercial Property Dealers</h3>
+        <p>Office space, retail and warehouse dealers who need to reach business decision-makers digitally</p>
+      </div>
+      <div class="who-card reveal">
+        <span class="who-emoji">🏗</span>
+        <h3>Builders & Contractors</h3>
+        <p>Construction businesses who want a steady flow of project inquiries from the right type of client</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ PROCESS ══════════ -->
+<div class="process-wrap">
+  <div class="process-inner">
+    <div class="section-eyebrow reveal">How It Works</div>
+    <h2 class="section-h2 reveal">From Zero to <span>Qualified Leads</span><br>in 4 Steps</h2>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Free 30-Min Lead Audit Call</h3>
+          <p>We review your current ads, content and lead sources. You'll know exactly what's killing your lead volume — and what the fastest fix is. No pitch, no pressure.</p>
+        </div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Custom Lead Strategy — Built for Your Market</h3>
+          <p>We map out the full lead funnel: what content to create, which audiences to target, what the ad budget should be, and what results to expect in 30–60 days.</p>
+        </div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>We Shoot, Edit, Launch & Manage</h3>
+          <p>Our team handles the video shoot, edits the content, builds the ads and goes live. You focus on closing — we focus on filling your pipeline.</p>
+        </div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Track Cost-Per-Lead, Optimize, Scale</h3>
+          <p>Weekly reports on leads, cost per inquiry and ad performance. We double down on what's working and cut what isn't — so your cost per lead keeps dropping.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ VIDEO PROOF ══════════ -->
+<div class="videos-wrap">
+  <div class="videos-inner">
+    <div class="section-eyebrow reveal">Client Results</div>
+    <h2 class="section-h2 reveal">Real Estate Businesses.<br><span>Real Lead Numbers.</span></h2>
+    <p class="section-lead reveal">Don't take our word for it. Here's what our clients said after working with TCP Agency.</p>
+
+    <div class="videos-grid reveal">
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Client Result 1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+        <div class="video-meta">
+          <strong>Rahul Sharma — Broker, Jaipur</strong>
+          <p>"Lead volume went 3x in the first 60 days"</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Client Result 2"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+        <div class="video-meta">
+          <strong>Priya Kapoor — Agency Owner, Delhi</strong>
+          <p>"First deal from Instagram closed in 45 days"</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Client Result 3"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+        <div class="video-meta">
+          <strong>Vikram Singh — Developer, Mumbai</strong>
+          <p>"200+ leads before the project even launched"</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" title="Client Result 4"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+        <div class="video-meta">
+          <strong>Meena Agarwal — Sales Head, Pune</strong>
+          <p>"Our cost per lead dropped by 60% in 3 months"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ CTA SECTION ══════════ -->
+<div class="cta-section">
+  <div class="cta-section-glow"></div>
+  <div class="cta-inner reveal">
+    <div class="cta-box">
+      <div class="cta-box-eyebrow">
+        <span></span>
+        Limited Spots — Book Now
+      </div>
+      <h2>Stop Waiting for Referrals.<br><span>Start Getting Leads on Demand.</span></h2>
+      <p class="cta-box-sub">
+        Book a free 30-minute Lead Audit Call. We'll review your current setup,
+        identify your biggest lead gaps and show you exactly how we'd fix them —
+        whether you work with us or not.
+      </p>
+
+      <ul class="checklist">
+        <li><strong>Honest audit</strong> of your current ads, content & lead sources</li>
+        <li><strong>Exact bottlenecks</strong> that are costing you qualified leads right now</li>
+        <li><strong>Custom lead strategy</strong> built for your property type & city</li>
+        <li><strong>Clear next steps</strong> you can implement immediately after the call</li>
+      </ul>
+
+      <a href="https://cal.com/tcp-agency/discovery-call" target="_blank" rel="noopener" class="btn-book">
+        Book My Free Lead Audit Call
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="btn-note">100% free · No credit card · No obligation · 30 minutes only</p>
+
+      <!-- WhatsApp strip -->
+      <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%20want%20to%20know%20more%20about%20real%20estate%20lead%20generation%20with%20TCP%20Agency"
+         target="_blank" rel="noopener" class="wa-strip">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#25d366">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <div>
+          <div class="wa-strip-text">Prefer WhatsApp? Message us directly</div>
+          <div class="wa-strip-sub">Quick reply within minutes</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://i.postimg.cc/cJXVLmcm/tcp-gol-logo.jpg" alt="TCP Agency" onerror="this.style.display='none'" />
+    <div class="footer-logo-name">TCP <span>Agency</span></div>
+  </div>
+  <p class="footer-tagline">Advertising | Business Growth</p>
+  <p class="footer-copy">© 2025 TCP Agency · Jaipur, India</p>
+</footer>
+
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 70}ms`;
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
