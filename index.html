@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow" />
-  <title>TCP Agency — Real Estate Lead Generation</title>
+  <title>Thrive Clip Productions — Real Estate Lead Generation</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,7 +31,6 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--black);
       color: var(--white);
@@ -40,8 +39,6 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-
-    /* subtle noise */
     body::before {
       content: '';
       position: fixed; inset: 0;
@@ -62,9 +59,10 @@
     .nav-logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
     .nav-logo-text {
       font-family: 'Space Grotesk', sans-serif;
-      font-weight: 800; font-size: 17px; color: var(--white); letter-spacing: -0.02em;
+      font-weight: 800; font-size: 16px; color: var(--white); letter-spacing: -0.02em;
+      line-height: 1.2;
     }
-    .nav-logo-text span { color: var(--gold); }
+    .nav-logo-text span { color: var(--gold); display: block; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
     .nav-cta {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 10px 22px;
@@ -77,8 +75,8 @@
     .nav-cta:hover { box-shadow: 0 0 28px var(--gold-glow); transform: translateY(-1px); }
     @media (max-width: 600px) {
       nav { padding: 13px 18px; }
-      .nav-logo-text { font-size: 15px; }
-      .nav-cta { font-size: 13px; padding: 9px 15px; }
+      .nav-logo-text { font-size: 14px; }
+      .nav-cta { font-size: 12px; padding: 9px 14px; }
     }
 
     /* ── HERO ── */
@@ -132,7 +130,6 @@
       position: relative; z-index: 1;
     }
     .hero-sub strong { color: var(--white); font-weight: 600; }
-
     .hero-cta-group {
       display: flex; flex-wrap: wrap; gap: 14px;
       align-items: center; justify-content: center;
@@ -180,10 +177,9 @@
       color: var(--gold); line-height: 1; margin-bottom: 5px;
     }
     .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
-
     @media (max-width: 580px) { .hero-stats { display: none; } }
 
-    /* ── SHARED LAYOUT ── */
+    /* ── SHARED ── */
     .section-eyebrow {
       font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--gold);
@@ -206,6 +202,43 @@
       -webkit-text-fill-color: transparent;
     }
     .section-lead { font-size: 16px; color: var(--muted); max-width: 540px; line-height: 1.8; }
+
+    /* ── VIDEOS / FEEDBACK ── */
+    .videos-wrap { padding: 90px 24px; background: var(--surface); }
+    .videos-inner { max-width: 1100px; margin: 0 auto; }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px; margin-top: 48px;
+    }
+    .video-card {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border-dim); background: var(--black-deep);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .video-card:hover { border-color: var(--border); transform: translateY(-4px); }
+    .video-card iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
+    .video-meta { padding: 14px 18px; }
+    .video-meta strong { color: var(--white); font-weight: 600; font-size: 13.5px; display: block; margin-bottom: 3px; }
+    .video-meta p { font-size: 12.5px; color: var(--muted); }
+
+    /* mid-section cal CTA after videos */
+    .mid-cta {
+      margin-top: 48px; text-align: center;
+    }
+    .mid-cta p { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
+    .mid-cta p strong { color: var(--white); }
+    .btn-mid {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 17px 34px;
+      background: var(--gold); color: var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 16px;
+      border-radius: 10px; text-decoration: none;
+      box-shadow: 0 4px 32px rgba(245,197,24,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-mid:hover { transform: translateY(-3px); box-shadow: 0 8px 48px rgba(245,197,24,0.46); }
 
     /* ── PROBLEM ── */
     .problem-wrap { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
@@ -239,7 +272,7 @@
     }
     .pain-card p { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
 
-    /* ── HOW WE GET LEADS ── */
+    /* ── HOW ── */
     .how-wrap { padding: 100px 24px; background: var(--surface); }
     .how-inner { max-width: 1100px; margin: 0 auto; }
     .how-grid {
@@ -248,10 +281,7 @@
       gap: 2px; margin-top: 56px;
       border: 1px solid var(--border-dim); border-radius: 20px; overflow: hidden;
     }
-    .how-card {
-      background: var(--black-deep); padding: 38px 34px;
-      transition: background 0.2s;
-    }
+    .how-card { background: var(--black-deep); padding: 38px 34px; transition: background 0.2s; }
     .how-card:hover { background: var(--surface-2); }
     .how-tag {
       display: inline-block; padding: 4px 12px; border-radius: 999px;
@@ -270,10 +300,7 @@
       display: flex; align-items: flex-start; gap: 9px;
       font-size: 13px; color: var(--muted);
     }
-    .how-points li::before {
-      content: '✦'; color: var(--gold); font-size: 10px;
-      margin-top: 3px; flex-shrink: 0;
-    }
+    .how-points li::before { content: '✦'; color: var(--gold); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
     .how-points li strong { color: var(--white); font-weight: 600; }
 
     /* ── WHO ── */
@@ -317,29 +344,10 @@
     }
     .step-body p { font-size: 14.5px; color: var(--muted); line-height: 1.75; }
 
-    /* ── VIDEOS ── */
-    .videos-wrap { padding: 100px 24px; }
-    .videos-inner { max-width: 1100px; margin: 0 auto; }
-    .videos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px; margin-top: 48px;
-    }
-    .video-card {
-      border-radius: 14px; overflow: hidden;
-      border: 1px solid var(--border-dim); background: var(--surface);
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .video-card:hover { border-color: var(--border); transform: translateY(-4px); }
-    .video-card iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
-    .video-meta { padding: 14px 18px; }
-    .video-meta strong { color: var(--white); font-weight: 600; font-size: 13.5px; display: block; margin-bottom: 3px; }
-    .video-meta p { font-size: 12.5px; color: var(--muted); }
-
-    /* ── MAIN CTA SECTION ── */
+    /* ── FINAL CTA ── */
     .cta-section {
       padding: 120px 24px;
-      background: var(--surface);
+      background: var(--black);
       position: relative; overflow: hidden;
     }
     .cta-section-glow {
@@ -350,9 +358,8 @@
       pointer-events: none;
     }
     .cta-inner { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
-
     .cta-box {
-      background: var(--black-deep);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 24px; padding: 56px 48px;
       position: relative; text-align: center;
@@ -385,7 +392,6 @@
       -webkit-text-fill-color: transparent;
     }
     .cta-box-sub { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 34px; }
-
     .checklist { text-align: left; display: flex; flex-direction: column; gap: 12px; margin-bottom: 34px; }
     .checklist li {
       display: flex; gap: 11px; align-items: flex-start;
@@ -400,7 +406,6 @@
       background-repeat: no-repeat; background-position: center;
     }
     .checklist li strong { color: var(--white); }
-
     .btn-book {
       display: inline-flex; align-items: center; gap: 10px;
       width: 100%; justify-content: center;
@@ -453,10 +458,13 @@
 <!-- ══════════ NAV ══════════ -->
 <nav>
   <div class="nav-logo">
-    <img src="https://i.postimg.cc/cJXVLmcm/tcp-gol-logo.jpg" alt="TCP Agency" onerror="this.style.display='none'" />
-    <span class="nav-logo-text">TCP <span>Agency</span></span>
+    <img src="https://i.postimg.cc/cJXVLmcm/tcp-gol-logo.jpg" alt="Thrive Clip Productions" onerror="this.style.display='none'" />
+    <div class="nav-logo-text">
+      Thrive Clip Productions
+      <span>Advertising · Business Growth</span>
+    </div>
   </div>
-  <a href="https://cal.com/ad-habits-pxhadl/adhabits" target="_blank" rel="noopener" class="nav-cta">
+  <a href="https://cal.com/ad-habits-pxhadl/tcp" target="_blank" rel="noopener" class="nav-cta">
     Book Free Call →
   </a>
 </nav>
@@ -484,7 +492,7 @@
   </p>
 
   <div class="hero-cta-group reveal">
-    <a href="https://cal.com/ad-habits-pxhadl/adhabits" target="_blank" rel="noopener" class="btn-primary">
+    <a href="https://cal.com/ad-habits-pxhadl/tcp" target="_blank" rel="noopener" class="btn-primary">
       Get a Free Lead Audit Call
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
@@ -506,6 +514,64 @@
     </div>
   </div>
 </section>
+
+
+<!-- ══════════ VIDEO FEEDBACK (before problem section) ══════════ -->
+<div class="videos-wrap">
+  <div class="videos-inner">
+    <div class="section-eyebrow reveal">Client Results</div>
+    <h2 class="section-h2 reveal">Real Estate Businesses.<br><span>Real Lead Numbers.</span></h2>
+    <p class="section-lead reveal">Don't take our word for it. Here's what our clients said after working with Thrive Clip Productions.</p>
+
+    <div class="videos-grid reveal">
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Client Result 1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+        <div class="video-meta">
+          <strong>Rahul Sharma — Broker, Jaipur</strong>
+          <p>"Lead volume went 3x in the first 60 days"</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Client Result 2"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+        <div class="video-meta">
+          <strong>Priya Kapoor — Agency Owner, Delhi</strong>
+          <p>"First deal from Instagram closed in 45 days"</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Client Result 3"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+        <div class="video-meta">
+          <strong>Vikram Singh — Developer, Mumbai</strong>
+          <p>"200+ leads before the project even launched"</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" title="Client Result 4"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+        <div class="video-meta">
+          <strong>Meena Agarwal — Sales Head, Pune</strong>
+          <p>"Our cost per lead dropped by 60% in 3 months"</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- cal.com CTA right after videos -->
+    <div class="mid-cta reveal">
+      <p><strong>Want results like these?</strong> Let's audit your current lead pipeline — for free.</p>
+      <a href="https://cal.com/ad-habits-pxhadl/tcp" target="_blank" rel="noopener" class="btn-mid">
+        Book My Free Lead Audit Call
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
 
 
 <!-- ══════════ PROBLEM ══════════ -->
@@ -568,7 +634,6 @@
           <li><strong>Thumbnail & cover design</strong> — for maximum click rate</li>
         </ul>
       </div>
-
       <div class="how-card">
         <span class="how-tag">Paid Advertising</span>
         <h3>Meta Ads Built to Deliver Qualified Buyers</h3>
@@ -580,7 +645,6 @@
           <li><strong>Weekly ROI reporting</strong> — cost per lead tracked</li>
         </ul>
       </div>
-
       <div class="how-card">
         <span class="how-tag">Social Media</span>
         <h3>Consistent Content on Instagram, Facebook & YouTube</h3>
@@ -597,12 +661,11 @@
 </div>
 
 
-<!-- ══════════ WHO WE SERVE ══════════ -->
+<!-- ══════════ WHO ══════════ -->
 <div class="who-wrap">
   <div class="who-inner">
     <div class="section-eyebrow reveal">Who We Work With</div>
     <h2 class="section-h2 reveal">If You're in Real Estate,<br><span>We Can Get You Leads</span></h2>
-
     <div class="who-grid">
       <div class="who-card reveal">
         <span class="who-emoji">🏠</span>
@@ -644,7 +707,6 @@
   <div class="process-inner">
     <div class="section-eyebrow reveal">How It Works</div>
     <h2 class="section-h2 reveal">From Zero to <span>Qualified Leads</span><br>in 4 Steps</h2>
-
     <div class="process-steps">
       <div class="process-step reveal">
         <div class="step-num">1</div>
@@ -679,56 +741,7 @@
 </div>
 
 
-<!-- ══════════ VIDEO PROOF ══════════ -->
-<div class="videos-wrap">
-  <div class="videos-inner">
-    <div class="section-eyebrow reveal">Client Results</div>
-    <h2 class="section-h2 reveal">Real Estate Businesses.<br><span>Real Lead Numbers.</span></h2>
-    <p class="section-lead reveal">Don't take our word for it. Here's what our clients said after working with TCP Agency.</p>
-
-    <div class="videos-grid reveal">
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Client Result 1"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-        <div class="video-meta">
-          <strong>Rahul Sharma — Broker, Jaipur</strong>
-          <p>"Lead volume went 3x in the first 60 days"</p>
-        </div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Client Result 2"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-        <div class="video-meta">
-          <strong>Priya Kapoor — Agency Owner, Delhi</strong>
-          <p>"First deal from Instagram closed in 45 days"</p>
-        </div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Client Result 3"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-        <div class="video-meta">
-          <strong>Vikram Singh — Developer, Mumbai</strong>
-          <p>"200+ leads before the project even launched"</p>
-        </div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" title="Client Result 4"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-        <div class="video-meta">
-          <strong>Meena Agarwal — Sales Head, Pune</strong>
-          <p>"Our cost per lead dropped by 60% in 3 months"</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════ CTA SECTION ══════════ -->
+<!-- ══════════ FINAL CTA ══════════ -->
 <div class="cta-section">
   <div class="cta-section-glow"></div>
   <div class="cta-inner reveal">
@@ -751,14 +764,15 @@
         <li><strong>Clear next steps</strong> you can implement immediately after the call</li>
       </ul>
 
-      <a href="https://cal.com/ad-habits-pxhadl/adhabits" target="_blank" rel="noopener" class="btn-book">
+      <!-- cal.com button ABOVE whatsapp -->
+      <a href="https://cal.com/ad-habits-pxhadl/tcp" target="_blank" rel="noopener" class="btn-book">
         Book My Free Lead Audit Call
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <p class="btn-note">100% free · No credit card · No obligation · 30 minutes only</p>
 
-      <!-- WhatsApp strip -->
-      <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%20want%20to%20know%20more%20about%20real%20estate%20lead%20generation%20with%20TCP%20Agency"
+      <!-- WhatsApp strip BELOW cal button -->
+      <a href="https://wa.me/917258055245?text=Hi%2C%20I%20want%20to%20know%20more%20about%20real%20estate%20lead%20generation%20with%20Thrive%20Clip%20Productions"
          target="_blank" rel="noopener" class="wa-strip">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#25d366">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -776,11 +790,11 @@
 <!-- ══════════ FOOTER ══════════ -->
 <footer>
   <div class="footer-logo">
-    <img src="https://i.postimg.cc/cJXVLmcm/tcp-gol-logo.jpg" alt="TCP Agency" onerror="this.style.display='none'" />
-    <div class="footer-logo-name">TCP <span>Agency</span></div>
+    <img src="https://i.postimg.cc/cJXVLmcm/tcp-gol-logo.jpg" alt="Thrive Clip Productions" onerror="this.style.display='none'" />
+    <div class="footer-logo-name">Thrive Clip <span>Productions</span></div>
   </div>
   <p class="footer-tagline">Advertising | Business Growth</p>
-  <p class="footer-copy">© 2025 TCP Agency · Jaipur, India</p>
+  <p class="footer-copy">© 2025 Thrive Clip Productions · Jaipur, India</p>
 </footer>
 
 
